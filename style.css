@@ -166,3 +166,12 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+/* ========== DEDICATION IMAGE FIX ========== */
+.dedication-img {
+  width: 180px;              /* sets consistent size */
+  height: auto;              /* keeps correct proportions */
+  border-radius: 12px;       /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  object-fit: cover;         /* prevents stretching */
+  display: block;            /* helps centering in flexbox */
+}
