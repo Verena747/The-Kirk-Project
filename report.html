@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Report a concerning or threatening comment to The Kirk Project for responsible review and assessment.">
+  <title>Report a Comment | The Kirk Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Report a Comment</h1>
+    <p>If you’ve seen a comment or message that appears threatening or alarming, please share the details below. Reports are treated confidentially and evaluated responsibly.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="report.html" class="active">Report</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Submit a Report</h2>
+      <form action="#" method="post" class="report-form">
+        <label for="name">Your Name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name (optional)">
+
+        <label for="email">Your Email (optional)</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email (optional)">
+
+        <label for="platform">Platform / Source</label>
+        <input type="text" id="platform" name="platform" placeholder="e.g., Twitter, Facebook, YouTube" required>
+
+        <label for="link">Link to Comment or Post</label>
+        <input type="url" id="link" name="link" placeholder="Paste the comment URL if available">
+
+        <label for="details">Describe the Comment or Threat</label>
+        <textarea id="details" name="details" placeholder="Provide as much detail as possible..." required></textarea>
+
+        <label for="screenshot">Upload Screenshot (optional)</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*">
+
+        <button type="submit">Submit Report</button>
+      </form>
+    </section>
+
+    <section class="note">
+      <p><strong>Note:</strong> Submitting this form does not automatically involve law enforcement. Reports are reviewed for credibility and context in accordance with The Kirk Project’s ethical guidelines.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Kirk Project | <a href="index.html">Home</a></p>
+  </footer>
+</body>
+</html>
