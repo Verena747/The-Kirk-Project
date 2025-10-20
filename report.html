@@ -1,58 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Report a concerning or threatening comment to The Kirk Project for responsible review and assessment.">
-  <title>Report a Comment | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report a Comment | Threat Assessment Network</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Report a Comment</h1>
-    <p>If you’ve seen a comment or message that appears threatening or alarming, please share the details below. Reports are treated confidentially and evaluated responsibly.</p>
+    <h1>Threat Assessment Network</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="report.html" class="active">Report</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="report.html" class="active">Report</a>
-  </nav>
-
-  <main>
-    <section>
+  <main class="report-container">
+    <section class="report-form">
       <h2>Submit a Report</h2>
-      <form action="#" method="post" class="report-form">
-        <label for="name">Your Name (optional)</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name (optional)">
+      <p>
+        Please provide as much detail as possible about the comment, post, or
+        message you believe could pose a threat. Our team will assess the
+        credibility and severity of the threat.
+      </p>
 
-        <label for="email">Your Email (optional)</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email (optional)">
+      <form id="reportForm">
+        <label for="platform">Platform (e.g., Twitter, Facebook, Reddit):</label>
+        <input type="text" id="platform" name="platform" placeholder="Enter platform name" required />
 
-        <label for="platform">Platform / Source</label>
-        <input type="text" id="platform" name="platform" placeholder="e.g., Twitter, Facebook, YouTube" required>
+        <label for="username">User or Account Name:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username or handle" required />
 
-        <label for="link">Link to Comment or Post</label>
-        <input type="url" id="link" name="link" placeholder="Paste the comment URL if available">
+        <label for="commentLink">Link to Comment/Post (if available):</label>
+        <input type="url" id="commentLink" name="commentLink" placeholder="https://example.com/post" />
 
-        <label for="details">Describe the Comment or Threat</label>
-        <textarea id="details" name="details" placeholder="Provide as much detail as possible..." required></textarea>
+        <label for="commentText">Comment or Threat Text:</label>
+        <textarea id="commentText" name="commentText" rows="5" placeholder="Paste the comment or message here..." required></textarea>
 
-        <label for="screenshot">Upload Screenshot (optional)</label>
-        <input type="file" id="screenshot" name="screenshot" accept="image/*">
+        <label for="context">Context or Additional Details:</label>
+        <textarea id="context" name="context" rows="3" placeholder="Describe the situation or any relevant background information"></textarea>
+
+        <label for="severity">Threat Severity Estimate (0–100%):</label>
+        <input type="range" id="severity" name="severity" min="0" max="100" step="1" value="0" oninput="updateSeverityLabel(this.value)" />
+        <span id="severityValue">0%</span>
 
         <button type="submit">Submit Report</button>
       </form>
     </section>
-
-    <section class="note">
-      <p><strong>Note:</strong> Submitting this form does not automatically involve law enforcement. Reports are reviewed for credibility and context in accordance with The Kirk Project’s ethical guidelines.</p>
-    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 The Kirk Project | <a href="index.html">Home</a></p>
+    <p>&copy; 2025 Threat Assessment Network. All rights reserved.</p>
   </footer>
+
+  <script>
+    function updateSeverityLabel(value) {
+      document.getElementById('severityValue').textContent = value + '%';
+    }
+
+    // Optional: basic confirmation alert on submission
+    document.getElementById('reportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Your report has been submitted successfully. Our team will review it shortly.');
+      this.reset();
+      updateSeverityLabel(0);
+    });
+  </script>
 </body>
 </html>
