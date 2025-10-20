@@ -190,3 +190,38 @@ footer {
     margin: 0.5rem 0;
   }
 }
+/* ========== ANIMATIONS ========== */
+
+/* Fade-in animation keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply fade-in to the dedication section */
+.dedication {
+  animation: fadeInUp 1.2s ease-out both;
+}
+/* ========== HEADER + NAV FADE-IN ========== */
+
+/* Fade-in animation for header and nav */
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header, nav {
+  animation: fadeInDown 1.2s ease-out both;
+}
