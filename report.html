@@ -3,185 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report a Comment | The Kirk Project</title>
+  <title>Report a Threat | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Report Form Section */
-    .report-container {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 2rem;
-    }
-
-    .report-form h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .report-form p {
-      text-align: justify;
-      margin-bottom: 1.5rem;
-    }
-
-    .report-form form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      animation: fadeInUp 1s ease-out both;
-    }
-
-    .report-form input[type="text"],
-    .report-form input[type="url"],
-    .report-form textarea,
-    .report-form select {
-      padding: 0.8rem 1rem;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .report-form button {
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 12px;
-      background-color: #004aad;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .report-form button:hover {
-      background-color: #00337f;
-    }
-
-    /* Result Box */
-    .result-box {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      font-weight: 600;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      max-height: 0;
-      overflow: hidden;
-      transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease;
-    }
-
-    .result-box.low { background-color: #c3f7c3; color: #064d06; }
-    .result-box.moderate { background-color: #fff4b3; color: #665c00; }
-    .result-box.high { background-color: #ffd1a3; color: #663d00; }
-    .result-box.critical { background-color: #f7b3b3; color: #4d0000; }
-
-    .result-box.show {
-      opacity: 1;
-      transform: translateY(0);
-      max-height: 200px; /* adjust if content is longer */
-    }
-  </style>
 </head>
 <body>
   <header>
     <h1>The Kirk Project</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="report.html" class="active">Report</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="report.html" class="active">Report</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
     </nav>
   </header>
 
-  <main class="report-container">
-    <section class="report-form">
-      <h2>Submit a Report</h2>
-      <p>
-        Please describe the comment or message that may indicate a potential threat. 
-        The system will automatically assess its risk level using key indicators and language analysis.
-      </p>
+  <main>
+    <h2>Report a Potential Threat</h2>
+    <p>
+      Please provide as much detail as possible. Every report is confidential and assessed for credibility and urgency. 
+      This system automatically calculates a threat rating based on keyword analysis.
+    </p>
 
-      <form id="reportForm">
-        <label for="platform">Platform (e.g., Twitter, Facebook, Reddit):</label>
-        <input type="text" id="platform" name="platform" placeholder="Enter platform name" required />
+    <!-- Report Form -->
+    <form id="reportForm" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+      <label for="reporterName">Your Name (optional):</label>
+      <input type="text" id="reporterName" name="reporterName" placeholder="Enter your name or leave blank" />
 
-        <label for="username">User or Account Name:</label>
-        <input type="text" id="username" name="username" placeholder="Enter username or handle" required />
+      <label for="contact">Contact Email (optional):</label>
+      <input type="email" id="contact" name="contact" placeholder="email@example.com" />
 
-        <label for="commentLink">Link to Comment/Post (if available):</label>
-        <input type="url" id="commentLink" name="commentLink" placeholder="https://example.com/post" />
+      <label for="threatSource">Where did you see this comment or post?</label>
+      <input type="text" id="threatSource" name="threatSource" placeholder="e.g., Twitter, Facebook, School Forum" required />
 
-        <label for="commentText">Comment or Threat Text:</label>
-        <textarea id="commentText" name="commentText" rows="5" placeholder="Paste the comment or message here..." required></textarea>
+      <label for="threatDetails">Describe the comment or threat:</label>
+      <textarea id="threatDetails" name="threatDetails" rows="6" required placeholder="Enter full comment or description..."></textarea>
 
-        <label for="context">Context or Additional Details:</label>
-        <textarea id="context" name="context" rows="3" placeholder="Describe any background information that may be relevant"></textarea>
+      <input type="hidden" name="threatScore" id="threatScore" />
 
-        <button type="submit">Submit Report</button>
-      </form>
+      <button type="submit">Submit Report</button>
+    </form>
 
-      <div id="resultBox" class="result-box"></div>
-    </section>
+    <div id="result" style="margin-top:1.5rem; font-weight:bold;"></div>
   </main>
 
   <footer>
-    <p>&copy; 2025 The Kirk Project. All rights reserved.</p>
+    <p>&copy; 2025 The Kirk Project</p>
   </footer>
 
   <script>
-    document.getElementById('reportForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const text = document.getElementById('commentText').value.toLowerCase();
-      const resultBox = document.getElementById('resultBox');
+    // Simple keyword-based scoring
+    const threatKeywords = [
+      "kill", "attack", "shoot", "bomb", "violence", "hate",
+      "destroy", "target", "threaten", "assault", "massacre",
+      "weapon", "explode", "murder", "harm"
+    ];
 
-      // Keyword weight system
-      const keywords = {
-        kill: 25, attack: 20, shoot: 30, bomb: 35, explode: 40, target: 15,
-        threat: 10, murder: 35, destroy: 25, harm: 20, weapon: 15, violence: 20
-      };
+    const form = document.getElementById("reportForm");
+    const resultBox = document.getElementById("result");
 
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const text = document.getElementById("threatDetails").value.toLowerCase();
       let score = 0;
-      let detected = [];
 
-      for (const [word, weight] of Object.entries(keywords)) {
-        if (text.includes(word)) {
-          score += weight;
-          detected.push(word);
-        }
-      }
+      // Count matching keywords
+      threatKeywords.forEach((word) => {
+        const occurrences = text.split(word).length - 1;
+        score += occurrences * 10;
+      });
 
-      // Clamp score between 0–100
-      score = Math.min(score, 100);
+      // Cap score at 100
+      if (score > 100) score = 100;
 
-      let level = "";
-      if (score <= 25) level = "Low Risk";
-      else if (score <= 50) level = "Moderate Risk";
-      else if (score <= 75) level = "High Risk";
-      else level = "Critical Risk";
+      // Display result
+      let message = "";
+      if (score >= 75) message = `⚠️ High risk (${score}%)`;
+      else if (score >= 40) message = `⚠️ Moderate risk (${score}%)`;
+      else message = `✅ Low risk (${score}%)`;
 
-      // Reset classes and add new ones
-      resultBox.className = "result-box";
-      if (score <= 25) resultBox.classList.add("low");
-      else if (score <= 50) resultBox.classList.add("moderate");
-      else if (score <= 75) resultBox.classList.add("high");
-      else resultBox.classList.add("critical");
+      resultBox.textContent = `Threat Level: ${message}`;
+      resultBox.style.color = score >= 75 ? "red" : score >= 40 ? "orange" : "green";
 
-      // Set content
-      resultBox.innerHTML = `
-        Threat Level: <strong>${level}</strong> (${score}%)
-        <br>${detected.length ? "Detected keywords: " + detected.join(", ") : "No strong indicators found."}
-      `;
+      // Store the score for Formspree
+      document.getElementById("threatScore").value = score;
 
-      // Trigger fade-in + slide-up animation
-      resultBox.style.display = "block";
-      setTimeout(() => resultBox.classList.add("show"), 10);
+      // Submit the form after grading
+      form.submit();
     });
   </script>
 </body>
