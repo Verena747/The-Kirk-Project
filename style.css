@@ -288,6 +288,7 @@ header, nav {
   outline: none;
   transition: color 0.3s;
   border-radius: 12px;
+  color: #000; /* makes questions black before hover */
 }
 
 .faq-question:hover {
