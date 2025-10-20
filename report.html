@@ -6,19 +6,85 @@
   <title>Report a Comment | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Report Form Section */
+    .report-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+    }
+
+    .report-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .report-form p {
+      text-align: justify;
+      margin-bottom: 1.5rem;
+    }
+
+    .report-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      animation: fadeInUp 1s ease-out both;
+    }
+
+    .report-form input[type="text"],
+    .report-form input[type="url"],
+    .report-form textarea,
+    .report-form select {
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .report-form button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #004aad;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .report-form button:hover {
+      background-color: #00337f;
+    }
+
+    /* Result Box */
     .result-box {
       margin-top: 20px;
       padding: 15px;
       border-radius: 10px;
-      display: none;
       font-weight: 600;
       text-align: center;
-      transition: background 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease;
     }
-    .low { background-color: #c3f7c3; color: #064d06; }
-    .moderate { background-color: #fff4b3; color: #665c00; }
-    .high { background-color: #ffd1a3; color: #663d00; }
-    .critical { background-color: #f7b3b3; color: #4d0000; }
+
+    .result-box.low { background-color: #c3f7c3; color: #064d06; }
+    .result-box.moderate { background-color: #fff4b3; color: #665c00; }
+    .result-box.high { background-color: #ffd1a3; color: #663d00; }
+    .result-box.critical { background-color: #f7b3b3; color: #4d0000; }
+
+    .result-box.show {
+      opacity: 1;
+      transform: translateY(0);
+      max-height: 200px; /* adjust if content is longer */
+    }
   </style>
 </head>
 <body>
@@ -100,19 +166,22 @@
       else if (score <= 75) level = "High Risk";
       else level = "Critical Risk";
 
-      // Assign color class
+      // Reset classes and add new ones
       resultBox.className = "result-box";
       if (score <= 25) resultBox.classList.add("low");
       else if (score <= 50) resultBox.classList.add("moderate");
       else if (score <= 75) resultBox.classList.add("high");
       else resultBox.classList.add("critical");
 
-      // Show result
+      // Set content
       resultBox.innerHTML = `
         Threat Level: <strong>${level}</strong> (${score}%)
         <br>${detected.length ? "Detected keywords: " + detected.join(", ") : "No strong indicators found."}
       `;
+
+      // Trigger fade-in + slide-up animation
       resultBox.style.display = "block";
+      setTimeout(() => resultBox.classList.add("show"), 10);
     });
   </script>
 </body>
