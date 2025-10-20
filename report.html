@@ -3,12 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report a Comment | Threat Assessment Network</title>
+  <title>Report a Comment | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .result-box {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      font-weight: 600;
+      text-align: center;
+      transition: background 0.4s ease;
+    }
+    .low { background-color: #c3f7c3; color: #064d06; }
+    .moderate { background-color: #fff4b3; color: #665c00; }
+    .high { background-color: #ffd1a3; color: #663d00; }
+    .critical { background-color: #f7b3b3; color: #4d0000; }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Threat Assessment Network</h1>
+    <h1>The Kirk Project</h1>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -23,9 +38,8 @@
     <section class="report-form">
       <h2>Submit a Report</h2>
       <p>
-        Please provide as much detail as possible about the comment, post, or
-        message you believe could pose a threat. Our team will assess the
-        credibility and severity of the threat.
+        Please describe the comment or message that may indicate a potential threat. 
+        The system will automatically assess its risk level using key indicators and language analysis.
       </p>
 
       <form id="reportForm">
@@ -42,32 +56,63 @@
         <textarea id="commentText" name="commentText" rows="5" placeholder="Paste the comment or message here..." required></textarea>
 
         <label for="context">Context or Additional Details:</label>
-        <textarea id="context" name="context" rows="3" placeholder="Describe the situation or any relevant background information"></textarea>
-
-        <label for="severity">Threat Severity Estimate (0–100%):</label>
-        <input type="range" id="severity" name="severity" min="0" max="100" step="1" value="0" oninput="updateSeverityLabel(this.value)" />
-        <span id="severityValue">0%</span>
+        <textarea id="context" name="context" rows="3" placeholder="Describe any background information that may be relevant"></textarea>
 
         <button type="submit">Submit Report</button>
       </form>
+
+      <div id="resultBox" class="result-box"></div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Threat Assessment Network. All rights reserved.</p>
+    <p>&copy; 2025 The Kirk Project. All rights reserved.</p>
   </footer>
 
   <script>
-    function updateSeverityLabel(value) {
-      document.getElementById('severityValue').textContent = value + '%';
-    }
-
-    // Optional: basic confirmation alert on submission
     document.getElementById('reportForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Your report has been submitted successfully. Our team will review it shortly.');
-      this.reset();
-      updateSeverityLabel(0);
+      const text = document.getElementById('commentText').value.toLowerCase();
+      const resultBox = document.getElementById('resultBox');
+
+      // Keyword weight system
+      const keywords = {
+        kill: 25, attack: 20, shoot: 30, bomb: 35, explode: 40, target: 15,
+        threat: 10, murder: 35, destroy: 25, harm: 20, weapon: 15, violence: 20
+      };
+
+      let score = 0;
+      let detected = [];
+
+      for (const [word, weight] of Object.entries(keywords)) {
+        if (text.includes(word)) {
+          score += weight;
+          detected.push(word);
+        }
+      }
+
+      // Clamp score between 0–100
+      score = Math.min(score, 100);
+
+      let level = "";
+      if (score <= 25) level = "Low Risk";
+      else if (score <= 50) level = "Moderate Risk";
+      else if (score <= 75) level = "High Risk";
+      else level = "Critical Risk";
+
+      // Assign color class
+      resultBox.className = "result-box";
+      if (score <= 25) resultBox.classList.add("low");
+      else if (score <= 50) resultBox.classList.add("moderate");
+      else if (score <= 75) resultBox.classList.add("high");
+      else resultBox.classList.add("critical");
+
+      // Show result
+      resultBox.innerHTML = `
+        Threat Level: <strong>${level}</strong> (${score}%)
+        <br>${detected.length ? "Detected keywords: " + detected.join(", ") : "No strong indicators found."}
+      `;
+      resultBox.style.display = "block";
     });
   </script>
 </body>
