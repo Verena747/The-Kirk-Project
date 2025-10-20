@@ -59,6 +59,68 @@
       <a href="report.html" class="cta-button">Report a Comment</a>
     </section>
   </main>
+<!-- Mission Statement Section -->
+<section id="mission" class="mission">
+  <h2>Our Mission</h2>
+  <p>
+    The Kirk Project is dedicated to identifying and assessing threats of violence — whether political, school-related, or community-based — with responsibility and care.
+  </p>
+  <p>
+    Our mission is to ensure that every warning, no matter how small or emotional, is reviewed thoughtfully and professionally. We believe in safeguarding free speech while preventing credible threats before they become tragedies. This is not about censorship — it’s about protection, understanding, and the duty to keep communities safe.
+  </p>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <button class="faq-question">Is The Kirk Project affiliated with law enforcement or a government agency?</button>
+    <div class="faq-answer">
+      <p>No. The Kirk Project operates independently to identify and assess potential threats using publicly available information and ethical analysis. When credible concerns arise, they are referred to appropriate authorities.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Do you remove or censor online content?</button>
+    <div class="faq-answer">
+      <p>No. Our role is to assess potential threats, not to silence speech. We distinguish between emotional outbursts and credible intentions of harm through context and verification.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How do you determine what qualifies as a “credible threat”?</button>
+    <div class="faq-answer">
+      <p>Each case is evaluated individually. Factors include context, specificity, means, and intent — ensuring a balanced and fair review before any action is taken.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">Can the public submit reports?</button>
+    <div class="faq-answer">
+      <p>Yes. Anyone can share concerning posts or statements through our reporting form. All submissions are confidential and reviewed by trained evaluators.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">How is privacy protected?</button>
+    <div class="faq-answer">
+      <p>We handle all reports and data responsibly. Personal information is never disclosed unless required for verified, serious threats to public safety.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ accordion toggle
+  const faqButtons = document.querySelectorAll(".faq-question");
+  faqButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      answer.classList.toggle("open");
+      button.classList.toggle("active");
+    });
+  });
+</script>
 
   <footer>
     <p>&copy; 2025 The Kirk Project | <a href="contact.html">Contact Us</a></p>
