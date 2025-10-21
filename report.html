@@ -1,95 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Report a Threat | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
-    <h1>The Kirk Project</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="report.html" class="active">Report</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
+    <div class="header-container">
+      <div class="logo">
+        <h1>The Kirk Project</h1>
+        <p class="tagline">Investigating and Preventing Targeted Violence</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="report.html" class="active">Report</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <h2>Report a Potential Threat</h2>
-    <p>
-      Please provide as much detail as possible. Every report is confidential and assessed for credibility and urgency. 
-      This system automatically calculates a threat rating based on keyword analysis.
-    </p>
+    <section>
+      <h2>Submit a Threat Report</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 2rem; color:#333;">
+        Every report matters. Provide as much detail as possible — our system will analyze your report 
+        and generate a preliminary credibility score to assist our assessment team.
+      </p>
 
-    <!-- Report Form -->
-    <form id="reportForm" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
-      <label for="reporterName">Your Name (optional):</label>
-      <input type="text" id="reporterName" name="reporterName" placeholder="Enter your name or leave blank" />
+      <form id="reportForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label for="name">Your Name (optional)</label>
+        <input type="text" id="name" name="name">
 
-      <label for="contact">Contact Email (optional):</label>
-      <input type="email" id="contact" name="contact" placeholder="email@example.com" />
+        <label for="email">Your Email (for follow-up, optional)</label>
+        <input type="email" id="email" name="email">
 
-      <label for="threatSource">Where did you see this comment or post?</label>
-      <input type="text" id="threatSource" name="threatSource" placeholder="e.g., Twitter, Facebook, School Forum" required />
+        <label for="location">Location of Threat (if known)</label>
+        <input type="text" id="location" name="location">
 
-      <label for="threatDetails">Describe the comment or threat:</label>
-      <textarea id="threatDetails" name="threatDetails" rows="6" required placeholder="Enter full comment or description..."></textarea>
+        <label for="threat">Describe the Threat</label>
+        <textarea id="threat" name="threat" rows="6" placeholder="Include details, names, dates, platforms, etc." required></textarea>
 
-      <input type="hidden" name="threatScore" id="threatScore" />
+        <!-- Hidden input that stores the calculated threat grade -->
+        <input type="hidden" id="threatGrade" name="threatGrade">
 
-      <button type="submit">Submit Report</button>
-    </form>
+        <button type="submit">Submit Report</button>
 
-    <div id="result" style="margin-top:1.5rem; font-weight:bold;"></div>
+        <!-- Message that appears after submission -->
+        <p id="thankYou" style="display:none; text-align:center; margin-top:1rem; color:green;">
+          ✅ Thank you for submitting your report. It has been received for review.
+        </p>
+      </form>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 The Kirk Project</p>
+    <p>© 2025 The Kirk Project. All rights reserved.</p>
   </footer>
 
+  <!-- ===== Threat Assessment Script ===== -->
   <script>
-    // Simple keyword-based scoring
-    const threatKeywords = [
-      "kill", "attack", "shoot", "bomb", "violence", "hate",
-      "destroy", "target", "threaten", "assault", "massacre",
-      "weapon", "explode", "murder", "harm"
-    ];
-
-    const form = document.getElementById("reportForm");
-    const resultBox = document.getElementById("result");
-
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const text = document.getElementById("threatDetails").value.toLowerCase();
+    // Simple keyword-based grading system
+    function calculateThreatLevel(text) {
+      const highRisk = ["kill", "shoot", "bomb", "attack", "violence", "threat", "harm", "murder", "school", "weapon"];
+      const mediumRisk = ["hate", "anger", "fight", "danger", "hurt", "target"];
       let score = 0;
 
-      // Count matching keywords
-      threatKeywords.forEach((word) => {
-        const occurrences = text.split(word).length - 1;
-        score += occurrences * 10;
-      });
+      const input = text.toLowerCase();
 
-      // Cap score at 100
+      highRisk.forEach(word => { if (input.includes(word)) score += 15; });
+      mediumRisk.forEach(word => { if (input.includes(word)) score += 7; });
+
       if (score > 100) score = 100;
+      return score;
+    }
 
-      // Display result
-      let message = "";
-      if (score >= 75) message = `⚠️ High risk (${score}%)`;
-      else if (score >= 40) message = `⚠️ Moderate risk (${score}%)`;
-      else message = `✅ Low risk (${score}%)`;
+    // Handle form submission
+    const form = document.getElementById('reportForm');
+    form.addEventListener('submit', function(e) {
+      const threatText = document.getElementById('threat').value;
+      const grade = calculateThreatLevel(threatText);
+      document.getElementById('threatGrade').value = grade;
 
-      resultBox.textContent = `Threat Level: ${message}`;
-      resultBox.style.color = score >= 75 ? "red" : score >= 40 ? "orange" : "green";
-
-      // Store the score for Formspree
-      document.getElementById("threatScore").value = score;
-
-      // Submit the form after grading
-      form.submit();
+      // Optional: show confirmation message
+      setTimeout(() => {
+        document.getElementById('thankYou').style.display = 'block';
+      }, 500);
     });
   </script>
 </body>
