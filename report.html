@@ -192,5 +192,42 @@
       }, 2000);
     });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        // Example: send data to your backend (if you have one)
+        // Replace "/submit-report" with your actual backend route
+        const response = await fetch("/submit-report", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        // If submission succeeded, redirect to thank-you page
+        if (response.ok) {
+          window.location.href = "thankyou.html";
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error submitting report:", error);
+        alert("There was a problem submitting your report. Please try again later.");
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
