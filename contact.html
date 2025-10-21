@@ -1,47 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact The Kirk Project — reach out for information, collaboration, or community support.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f9fafc;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #102542, #1e3d59);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    header h1 { margin: 0; font-size: 2rem; }
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e0e4ea;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    nav a {
+      text-decoration: none;
+      color: #1e3d59;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #ff9800; }
+
+    main {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    h2 { text-align: center; color: #102542; }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, button {
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    input:focus, textarea:focus {
+      border-color: #1e3d59;
+      box-shadow: 0 0 4px #1e3d59;
+      outline: none;
+    }
+    button {
+      background-color: #1e3d59;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    button:hover { background-color: #163146; }
+
+    footer {
+      background-color: #f1f3f6;
+      text-align: center;
+      padding: 1rem;
+      color: #555;
+      border-top: 1px solid #e0e4ea;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Contact The Kirk Project</h1>
-    <p>We welcome collaboration, dialogue, and responsible reporting of threats.</p>
+    <h1>The Kirk Project</h1>
+    <p>Assessing threats. Safeguarding communities. Upholding freedom.</p>
   </header>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
+    <a href="contact.html">Contact</a>
+    <a href="report.html">Report a Threat</a>
   </nav>
 
   <main>
-    <section>
-      <h2>Get in Touch</h2>
-      <p>If you’d like to learn more about The Kirk Project, share resources, or discuss partnerships, please reach out below.</p>
+    <h2>Contact Us</h2>
+    <p style="text-align:center;">Have a question or suggestion? Reach out to our team below.</p>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
 
-      <form action="#" method="post" class="contact-form">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required>
 
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+      <button type="submit">Send Message</button>
+    </form>
   </main>
 
   <footer>
-    <p>&copy; 2025 The Kirk Project | <a href="index.html">Home</a></p>
+    &copy; 2025 The Kirk Project. All rights reserved.
   </footer>
 </body>
 </html>
-
