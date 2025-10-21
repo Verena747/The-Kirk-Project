@@ -9,14 +9,10 @@
     body {
       font-family: "Inter", sans-serif;
       background-color: #f9fafc;
-      color: #222;
+      color: #1a1a1a;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
-
     header {
       background: linear-gradient(to right, #102542, #1e3d59);
       color: #fff;
@@ -24,71 +20,75 @@
       padding: 1.5rem 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 1px;
+    header h1 { margin: 0; font-size: 2rem; }
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e0e4ea;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
+    nav a {
+      text-decoration: none;
+      color: #1e3d59;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #ff9800; }
 
     main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      max-width: 700px;
+      margin: 4rem auto;
+      background: white;
+      border-radius: 16px;
       padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
       text-align: center;
     }
-
-    h2 {
-      color: #102542;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      max-width: 600px;
-      line-height: 1.6;
-      font-size: 1.05rem;
-      color: #333;
-    }
-
-    a {
-      margin-top: 2rem;
+    h2 { color: #102542; }
+    p { font-size: 1.1rem; margin-top: 1rem; color: #333; }
+    .btn {
       display: inline-block;
+      margin-top: 1.5rem;
       background-color: #1e3d59;
       color: white;
       padding: 0.75rem 1.5rem;
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s;
       font-weight: 600;
+      transition: background 0.3s;
     }
-
-    a:hover {
-      background-color: #163146;
-    }
+    .btn:hover { background-color: #163146; }
 
     footer {
+      background-color: #f1f3f6;
       text-align: center;
       padding: 1rem;
-      color: #777;
-      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid #e0e4ea;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>The Kirk Project</h1>
+    <p>Assessing threats. Safeguarding communities. Upholding freedom.</p>
   </header>
 
-  <main>
-    <h2>Thank You for Your Report</h2>
-    <p>Your submission has been received and will be reviewed with care and confidentiality.  
-    Every report — no matter how small — contributes to building a safer community for everyone.</p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="report.html">Report a Threat</a>
+  </nav>
 
-    <a href="index.html">Return to Home</a>
+  <main>
+    <h2>Thank You for Your Submission</h2>
+    <p>Your report has been received and will be reviewed by our assessment team.  
+    We appreciate your vigilance and commitment to public safety.</p>
+    <a href="index.html" class="btn">Return to Home</a>
   </main>
 
   <footer>
