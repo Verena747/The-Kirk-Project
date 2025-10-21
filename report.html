@@ -67,8 +67,8 @@
   <script>
     // Simple keyword-based grading system
     function calculateThreatLevel(text) {
-      const highRisk = ["kill", "shoot", "bomb", "attack", "violence", "threat", "harm", "murder", "school", "weapon", "gun", "knife", "stab", "torture"];
-      const mediumRisk = ["hate", "anger", "fight", "danger", "hurt", "target"];
+      const highRisk = ["kill", "shoot", "shoot up", "bomb", "attack", "violence", "threat", "harm", "murder", "school", "weapon", "gun", "knife", "stab", "torture", "massacre", "execute", "exterminate", "annihilate", "slaughter", "take lives", "go to school tomorrow with a gun", "I’ll make them die", "bring bullets", "AR15", "rifle", "explosive", "detonate", "terrorist", "attack tomorrow", "plan", "hit list", "target list", "death list"];
+      const mediumRisk = ["hate", "anger", "fight", "danger", "hurt", "target", "destroy", "ruin", "burn", "revenge",  "make them pay", "bring a weapon", "show them", "scared", "threat", "attack", "make them suffer", "blow up", "bring knife", "end them", "take them down"];
       let score = 0;
 
       const input = text.toLowerCase();
