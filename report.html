@@ -1,108 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report a Threat | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Report a Threat</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="faq.html">FAQ</a>
-      <a href="report.html" class="active">Report</a>
-    </nav>
-  </header>
+<section id="report" class="py-20 bg-gray-100 text-gray-900">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-6 text-center text-blue-900">Submit a Report</h2>
+    <p class="text-center mb-10 text-gray-600">
+      Please provide as much information as possible. All submissions are reviewed confidentially.
+    </p>
 
-  <main class="report-section">
-    <h2>Submit a Potential Threat</h2>
-    <p>Please describe the situation in detail. All submissions are confidential and reviewed for credibility.</p>
-
-    <form id="reportForm" action="https://formspree.io/f/mzzjqknl" method="POST">
+    <form
+      action="https://formspree.io/f/mzzjqknl"
+      method="POST"
+      class="bg-white p-8 rounded-2xl shadow-lg space-y-6"
+    >
       <!-- Redirect to your own thank-you page -->
-      <input type="hidden" name="_redirect" value="https://yourwebsite.com/thankyou.html">
+      <input type="hidden" name="_redirect" value="https://thekirkproject.org/thankyou.html" />
 
-      <div class="checkbox">
-        <input type="checkbox" id="anonymous">
-        <label for="anonymous">Submit anonymously</label>
+      <!-- Optionally include this to set subject -->
+      <input type="hidden" name="_subject" value="New Threat Report Submission" />
+
+      <!-- Reporter Info -->
+      <div>
+        <label for="name" class="block font-semibold mb-2">Your Name (optional)</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Leave blank to stay anonymous"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        />
       </div>
 
-      <div class="personal-info">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required>
-
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      <div>
+        <label for="email" class="block font-semibold mb-2">Your Email (optional)</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Only if you’d like follow-up"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        />
       </div>
 
-      <label for="platform">Platform where the comment was found:</label>
-      <input type="text" id="platform" name="platform" placeholder="e.g., Twitter, Reddit, YouTube, Facebook" required>
+      <!-- Report Details -->
+      <div>
+        <label for="platform" class="block font-semibold mb-2">Platform / Source</label>
+        <input
+          type="text"
+          id="platform"
+          name="platform"
+          placeholder="e.g., Twitter, Reddit, Facebook, YouTube"
+          required
+          class="w-full border border-gray-300 rounded-lg p-3"
+        />
+      </div>
 
-      <label for="username">Username or handle of the commenter (if known):</label>
-      <input type="text" id="username" name="username" placeholder="e.g., @user123 or JohnD" />
+      <div>
+        <label for="username" class="block font-semibold mb-2">Username / Handle of Commenter</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter the username or screen name (if known)"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        />
+      </div>
 
-      <label for="threat">Threat Description:</label>
-      <textarea id="threat" name="threat" rows="6" placeholder="Describe the threat or concerning comment..." required></textarea>
+      <div>
+        <label for="comment" class="block font-semibold mb-2">Comment or Post Content</label>
+        <textarea
+          id="comment"
+          name="comment"
+          rows="4"
+          required
+          placeholder="Paste the full comment, post, or message text here"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        ></textarea>
+      </div>
 
-      <button type="submit">Submit Report</button>
+      <div>
+        <label for="context" class="block font-semibold mb-2">Context / Additional Information</label>
+        <textarea
+          id="context"
+          name="context"
+          rows="4"
+          placeholder="Add any context, screenshots, or relevant details"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        ></textarea>
+      </div>
+
+      <!-- Location (optional) -->
+      <div>
+        <label for="location" class="block font-semibold mb-2">Location (if relevant)</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="City, State, or Region"
+          class="w-full border border-gray-300 rounded-lg p-3"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition"
+        >
+          Submit Report
+        </button>
+      </div>
     </form>
-
-    <div id="result"></div>
-  </main>
-
-  <footer>
-    &copy; 2025 The Kirk Project. All rights reserved.
-  </footer>
-
-  <script>
-    // Hide personal info when "anonymous" is checked
-    document.getElementById('anonymous').addEventListener('change', function() {
-      document.querySelectorAll('.personal-info').forEach(field => {
-        field.style.display = this.checked ? 'none' : 'block';
-      });
-      document.getElementById('name').required = !this.checked;
-      document.getElementById('email').required = !this.checked;
-    });
-
-    // Keyword-based grading system
-    const keywords = {
-      high: ["bomb", "kill", "shoot", "attack", "massacre", "threaten", "gun", "weapon", "explode", "assault"],
-      moderate: ["hate", "anger", "destroy", "hurt", "fight", "dangerous", "plan", "revenge"],
-      low: ["argue", "upset", "mad", "disagree", "annoyed"]
-    };
-
-    document.getElementById('reportForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const text = document.getElementById('threat').value.toLowerCase();
-      let score = 0;
-
-      for (const word of keywords.high) if (text.includes(word)) score += 40;
-      for (const word of keywords.moderate) if (text.includes(word)) score += 25;
-      for (const word of keywords.low) if (text.includes(word)) score += 10;
-
-      if (score > 100) score = 100;
-
-      const result = document.getElementById('result');
-      result.style.display = "block";
-
-      if (score <= 30) {
-        result.className = "low";
-        result.textContent = `Threat Level: ${score}% — Low Risk`;
-      } else if (score <= 70) {
-        result.className = "moderate";
-        result.textContent = `Threat Level: ${score}% — Moderate Risk`;
-      } else {
-        result.className = "high";
-        result.textContent = `Threat Level: ${score}% — High Risk`;
-      }
-
-      // Delay a bit, then submit to Formspree
-      setTimeout(() => e.target.submit(), 2000);
-    });
-  </script>
-</body>
-</html>
+  </div>
+</section>
