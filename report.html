@@ -1,80 +1,209 @@
-<section id="report" class="report-section">
-  <div class="report-container">
-    <h2>Submit a Report</h2>
-    <p>
-      Please provide as much information as possible. All submissions are reviewed confidentially.
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit a Report | The Kirk Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---------- REPORT SECTION ---------- */
+    .report-section {
+      background-color: #f0f4f8;
+      padding: 4rem 1rem;
+    }
 
-    <form
-      action="https://formspree.io/f/mzzjqknl"
-      method="POST"
-      id="reportForm"
-    >
-      <!-- Redirect to thank-you page -->
-      <input type="hidden" name="_redirect" value="https://thekirkproject.vercel.app/thankyou.html" />
+    .report-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      padding: 2.5rem;
+      animation: fadeIn 0.6s ease;
+    }
 
-      <!-- Optionally include subject -->
-      <input type="hidden" name="_subject" value="New Threat Report Submission" />
+    .report-container h2 {
+      text-align: center;
+      color: #102542;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
 
-      <label for="name">Your Name (optional)</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Leave blank to stay anonymous"
-      />
+    .report-container p {
+      text-align: center;
+      color: #333;
+      margin-bottom: 2rem;
+    }
 
-      <label for="email">Your Email (optional)</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Only if you’d like follow-up"
-      />
+    form label {
+      font-weight: 600;
+      color: #1e3d59;
+      display: block;
+      margin-top: 1rem;
+    }
 
-      <label for="platform">Platform / Source</label>
-      <input
-        type="text"
-        id="platform"
-        name="platform"
-        placeholder="e.g., Twitter, Reddit, Facebook, YouTube"
-        required
-      />
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+      transition: all 0.2s ease-in-out;
+    }
 
-      <label for="username">Username / Handle of Commenter</label>
-      <input
-        type="text"
-        id="username"
-        name="username"
-        placeholder="Enter the username or screen name (if known)"
-      />
+    form input:focus,
+    form textarea:focus {
+      border-color: #1e3d59;
+      outline: none;
+      box-shadow: 0 0 4px #1e3d59;
+    }
 
-      <label for="comment">Comment or Post Content</label>
-      <textarea
-        id="comment"
-        name="comment"
-        rows="4"
-        required
-        placeholder="Paste the full comment, post, or message text here"
-      ></textarea>
+    form button {
+      display: block;
+      width: 100%;
+      margin-top: 1.8rem;
+      background-color: #1e3d59;
+      color: white;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-      <label for="context">Context / Additional Information</label>
-      <textarea
-        id="context"
-        name="context"
-        rows="4"
-        placeholder="Add any context, screenshots, or relevant details"
-      ></textarea>
+    form button:hover {
+      background-color: #163146;
+    }
 
-      <label for="location">Location (if relevant)</label>
-      <input
-        type="text"
-        id="location"
-        name="location"
-        placeholder="City, State, or Region"
-      />
+    /* ---------- RESULT ---------- */
+    #result {
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      display: none;
+    }
 
-      <button type="submit">Submit Report</button>
-    </form>
-  </div>
-</section>
+    .low { color: #2e8b57; }
+    .moderate { color: #ff9800; }
+    .high { color: #d32f2f; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>The Kirk Project</h1>
+    <p>Threat Reporting & Prevention Network</p>
+  </header>
+
+  <section id="report" class="report-section">
+    <div class="report-container">
+      <h2>Submit a Report</h2>
+      <p>
+        Please provide as much information as possible. All submissions are reviewed confidentially.
+      </p>
+
+      <form id="reportForm" action="https://formspree.io/f/mzzjqknl" method="POST">
+        <input type="hidden" name="_redirect" value="https://thekirkproject.vercel.app/thankyou.html" />
+        <input type="hidden" name="_subject" value="New Threat Report Submission" />
+
+        <label for="name">Your Name (optional)</label>
+        <input type="text" id="name" name="name" placeholder="Leave blank to stay anonymous" />
+
+        <label for="email">Your Email (optional)</label>
+        <input type="email" id="email" name="email" placeholder="Only if you’d like follow-up" />
+
+        <label for="platform">Platform / Source</label>
+        <input
+          type="text"
+          id="platform"
+          name="platform"
+          placeholder="e.g., Twitter, Reddit, Facebook, YouTube"
+          required
+        />
+
+        <label for="username">Username / Handle of Commenter</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter the username or screen name (if known)"
+        />
+
+        <label for="comment">Comment or Post Content</label>
+        <textarea
+          id="comment"
+          name="comment"
+          rows="4"
+          required
+          placeholder="Paste the full comment, post, or message text here"
+        ></textarea>
+
+        <label for="context">Context / Additional Information</label>
+        <textarea
+          id="context"
+          name="context"
+          rows="4"
+          placeholder="Add any context, screenshots, or relevant details"
+        ></textarea>
+
+        <label for="location">Location (if relevant)</label>
+        <input type="text" id="location" name="location" placeholder="City, State, or Region" />
+
+        <button type="button" id="analyzeBtn">Analyze Threat</button>
+        <div id="result"></div>
+
+        <button type="submit" id="submitBtn" style="display:none;">Submit Report</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 The Kirk Project. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ---------- THREAT ANALYSIS ----------
+    document.getElementById("analyzeBtn").addEventListener("click", function () {
+      const comment = document.getElementById("comment").value.toLowerCase();
+      const result = document.getElementById("result");
+      const submitBtn = document.getElementById("submitBtn");
+
+      if (!comment.trim()) {
+        result.textContent = "Please enter a comment before analyzing.";
+        result.style.display = "block";
+        result.className = "";
+        return;
+      }
+
+      const highKeywords = ["kill", "shoot", "bomb", "attack", "threat", "murder", "gun", "explode", "massacre"];
+      const moderateKeywords = ["hate", "die", "destroy", "hurt", "fight", "violence", "revenge"];
+      let score = 0;
+
+      highKeywords.forEach(word => { if (comment.includes(word)) score += 3; });
+      moderateKeywords.forEach(word => { if (comment.includes(word)) score += 1; });
+
+      let level, colorClass;
+      if (score >= 5) { level = "High Threat Level"; colorClass = "high"; }
+      else if (score >= 2) { level = "Moderate Threat Level"; colorClass = "moderate"; }
+      else { level = "Low Threat Level"; colorClass = "low"; }
+
+      result.textContent = `⚠️ ${level} detected.`;
+      result.className = colorClass;
+      result.style.display = "block";
+
+      if (score >= 1) {
+        submitBtn.style.display = "block";
+        submitBtn.textContent = "Proceed to Submit";
+      } else {
+        submitBtn.style.display = "block";
+        submitBtn.textContent = "Submit (No threat detected)";
+      }
+    });
+  </script>
+</body>
+</html>
