@@ -50,22 +50,30 @@
       padding: 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
     }
 
     main h2 {
       font-size: 2rem;
       color: #1e3a5f;
       margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInText 1.2s ease forwards 0.6s;
     }
 
     main p {
       font-size: 1.1rem;
       color: #374151;
       line-height: 1.6;
+      opacity: 0;
+      animation: fadeInText 1.4s ease forwards 1s;
     }
 
     .button-container {
       margin-top: 2rem;
+      opacity: 0;
+      animation: fadeInText 1.4s ease forwards 1.4s;
     }
 
     .button-container a {
@@ -75,11 +83,37 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .button-container a:hover {
       background-color: #2c5282;
+      transform: scale(1.03);
+    }
+
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 5px solid #4CAF50;
+      position: relative;
+      margin-bottom: 1.5rem;
+      animation: popIn 0.6s ease forwards;
+    }
+
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 35px;
+      width: 22px;
+      height: 45px;
+      border-right: 5px solid #4CAF50;
+      border-bottom: 5px solid #4CAF50;
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: drawCheck 0.6s ease forwards 0.4s;
     }
 
     footer {
@@ -91,6 +125,22 @@
       bottom: 0;
       width: 100%;
       font-size: 0.9rem;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      80% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes drawCheck {
+      0% { opacity: 0; transform: scale(0) rotate(45deg); }
+      100% { opacity: 1; transform: scale(1) rotate(45deg); }
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(15px); }
     }
   </style>
 </head>
@@ -106,6 +156,7 @@
   </header>
 
   <main>
+    <div class="checkmark"></div>
     <h2>Thank You for Your Submission</h2>
     <p>
       Your report has been successfully submitted and will be reviewed by our assessment team.
