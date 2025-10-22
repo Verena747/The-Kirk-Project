@@ -1,112 +1,80 @@
-<section id="report" class="py-20 bg-gray-100 text-gray-900">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-4xl font-bold mb-6 text-center text-blue-900">Submit a Report</h2>
-    <p class="text-center mb-10 text-gray-600">
+<section id="report" class="report-section">
+  <div class="report-container">
+    <h2>Submit a Report</h2>
+    <p>
       Please provide as much information as possible. All submissions are reviewed confidentially.
     </p>
 
     <form
       action="https://formspree.io/f/mzzjqknl"
       method="POST"
-      class="bg-white p-8 rounded-2xl shadow-lg space-y-6"
+      id="reportForm"
     >
-      <!-- Redirect to your own thank-you page -->
-     <input type="hidden" name="_redirect" value="https://thekirkproject.vercel.app/thankyou.html" />
+      <!-- Redirect to thank-you page -->
+      <input type="hidden" name="_redirect" value="https://thekirkproject.vercel.app/thankyou.html" />
 
-      <!-- Optionally include this to set subject -->
+      <!-- Optionally include subject -->
       <input type="hidden" name="_subject" value="New Threat Report Submission" />
 
-      <!-- Reporter Info -->
-      <div>
-        <label for="name" class="block font-semibold mb-2">Your Name (optional)</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Leave blank to stay anonymous"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        />
-      </div>
+      <label for="name">Your Name (optional)</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Leave blank to stay anonymous"
+      />
 
-      <div>
-        <label for="email" class="block font-semibold mb-2">Your Email (optional)</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Only if you’d like follow-up"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        />
-      </div>
+      <label for="email">Your Email (optional)</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Only if you’d like follow-up"
+      />
 
-      <!-- Report Details -->
-      <div>
-        <label for="platform" class="block font-semibold mb-2">Platform / Source</label>
-        <input
-          type="text"
-          id="platform"
-          name="platform"
-          placeholder="e.g., Twitter, Reddit, Facebook, YouTube"
-          required
-          class="w-full border border-gray-300 rounded-lg p-3"
-        />
-      </div>
+      <label for="platform">Platform / Source</label>
+      <input
+        type="text"
+        id="platform"
+        name="platform"
+        placeholder="e.g., Twitter, Reddit, Facebook, YouTube"
+        required
+      />
 
-      <div>
-        <label for="username" class="block font-semibold mb-2">Username / Handle of Commenter</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter the username or screen name (if known)"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        />
-      </div>
+      <label for="username">Username / Handle of Commenter</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Enter the username or screen name (if known)"
+      />
 
-      <div>
-        <label for="comment" class="block font-semibold mb-2">Comment or Post Content</label>
-        <textarea
-          id="comment"
-          name="comment"
-          rows="4"
-          required
-          placeholder="Paste the full comment, post, or message text here"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        ></textarea>
-      </div>
+      <label for="comment">Comment or Post Content</label>
+      <textarea
+        id="comment"
+        name="comment"
+        rows="4"
+        required
+        placeholder="Paste the full comment, post, or message text here"
+      ></textarea>
 
-      <div>
-        <label for="context" class="block font-semibold mb-2">Context / Additional Information</label>
-        <textarea
-          id="context"
-          name="context"
-          rows="4"
-          placeholder="Add any context, screenshots, or relevant details"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        ></textarea>
-      </div>
+      <label for="context">Context / Additional Information</label>
+      <textarea
+        id="context"
+        name="context"
+        rows="4"
+        placeholder="Add any context, screenshots, or relevant details"
+      ></textarea>
 
-      <!-- Location (optional) -->
-      <div>
-        <label for="location" class="block font-semibold mb-2">Location (if relevant)</label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder="City, State, or Region"
-          class="w-full border border-gray-300 rounded-lg p-3"
-        />
-      </div>
+      <label for="location">Location (if relevant)</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        placeholder="City, State, or Region"
+      />
 
-      <!-- Submit Button -->
-      <div class="text-center">
-        <button
-          type="submit"
-          class="bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition"
-        >
-          Submit Report
-        </button>
-      </div>
+      <button type="submit">Submit Report</button>
     </form>
   </div>
 </section>
