@@ -22,6 +22,9 @@
     <p>Please describe the situation in detail. All submissions are confidential and reviewed for credibility.</p>
 
     <form id="reportForm" action="https://formspree.io/f/mzzjqknl" method="POST">
+      <!-- Redirect to your own thank-you page -->
+      <input type="hidden" name="_redirect" value="https://yourwebsite.com/thankyou.html">
+
       <div class="checkbox">
         <input type="checkbox" id="anonymous">
         <label for="anonymous">Submit anonymously</label>
@@ -60,7 +63,6 @@
       document.querySelectorAll('.personal-info').forEach(field => {
         field.style.display = this.checked ? 'none' : 'block';
       });
-      // Disable name/email inputs when anonymous
       document.getElementById('name').required = !this.checked;
       document.getElementById('email').required = !this.checked;
     });
@@ -98,7 +100,7 @@
         result.textContent = `Threat Level: ${score}% — High Risk`;
       }
 
-      // Delay 2s then submit to Formspree
+      // Delay a bit, then submit to Formspree
       setTimeout(() => e.target.submit(), 2000);
     });
   </script>
