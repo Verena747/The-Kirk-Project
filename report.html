@@ -5,136 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Report a Threat | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: "Inter", sans-serif;
-      background-color: #f4f6f8;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: linear-gradient(to right, #102542, #1e3d59);
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.5px;
-    }
-
-    nav {
-      margin-top: 0.5rem;
-    }
-
-    nav a {
-      color: #cdd9e5;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover, nav a.active {
-      color: #fff;
-    }
-
-    main {
-      max-width: 700px;
-      margin: 3rem auto;
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-      text-align: center;
-      color: #102542;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      text-align: center;
-      color: #444;
-      margin-bottom: 2rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    label {
-      font-weight: 600;
-      color: #102542;
-    }
-
-    input, textarea, select, button {
-      padding: 0.8rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      transition: all 0.2s ease-in-out;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: #1e3d59;
-      outline: none;
-      box-shadow: 0 0 5px #1e3d59;
-    }
-
-    button {
-      background-color: #1e3d59;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 0.9rem;
-      transition: background-color 0.3s;
-      border-radius: 10px;
-    }
-
-    button:hover {
-      background-color: #163146;
-    }
-
-    #result {
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-      display: none;
-    }
-
-    .low { color: #2e8b57; }
-    .moderate { color: #ff9800; }
-    .high { color: #d32f2f; }
-
-    .checkbox {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      color: #777;
-      font-size: 0.9rem;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>The Kirk Project</h1>
+    <h1>Report a Threat</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -143,43 +17,30 @@
     </nav>
   </header>
 
-  <main>
-    <h2>Report a Threat</h2>
+  <main class="report-section">
+    <h2>Submit a Potential Threat</h2>
     <p>Please describe the situation in detail. All submissions are confidential and reviewed for credibility.</p>
 
     <form id="reportForm" action="https://formspree.io/f/mzzjqknl" method="POST">
-      <!-- Anonymous checkbox -->
       <div class="checkbox">
         <input type="checkbox" id="anonymous">
         <label for="anonymous">Submit anonymously</label>
       </div>
 
-      <!-- Personal Info -->
       <div class="personal-info">
         <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" placeholder="John Doe">
+        <input type="text" id="name" name="name" placeholder="John Doe" required>
 
         <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com">
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
       </div>
 
-      <!-- New fields -->
       <label for="platform">Platform where the comment was found:</label>
-      <select id="platform" name="platform">
-        <option value="">Select a platform...</option>
-        <option value="X (Twitter)">X (Twitter)</option>
-        <option value="Facebook">Facebook</option>
-        <option value="Instagram">Instagram</option>
-        <option value="Reddit">Reddit</option>
-        <option value="TikTok">TikTok</option>
-        <option value="YouTube">YouTube</option>
-        <option value="Other">Other</option>
-      </select>
+      <input type="text" id="platform" name="platform" placeholder="e.g., Twitter, Reddit, YouTube, Facebook" required>
 
-      <label for="username">Username or handle of commenter:</label>
-      <input type="text" id="username" name="username" placeholder="@username or profile name">
+      <label for="username">Username or handle of the commenter (if known):</label>
+      <input type="text" id="username" name="username" placeholder="e.g., @user123 or JohnD" />
 
-      <!-- Threat Description -->
       <label for="threat">Threat Description:</label>
       <textarea id="threat" name="threat" rows="6" placeholder="Describe the threat or concerning comment..." required></textarea>
 
@@ -194,16 +55,14 @@
   </footer>
 
   <script>
-    // Anonymous toggle logic
-    const anonymousCheckbox = document.getElementById('anonymous');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-
-    anonymousCheckbox.addEventListener('change', function() {
-      const hide = this.checked;
-      document.querySelector('.personal-info').style.display = hide ? 'none' : 'block';
-      nameInput.required = !hide;
-      emailInput.required = !hide;
+    // Hide personal info when "anonymous" is checked
+    document.getElementById('anonymous').addEventListener('change', function() {
+      document.querySelectorAll('.personal-info').forEach(field => {
+        field.style.display = this.checked ? 'none' : 'block';
+      });
+      // Disable name/email inputs when anonymous
+      document.getElementById('name').required = !this.checked;
+      document.getElementById('email').required = !this.checked;
     });
 
     // Keyword-based grading system
@@ -222,6 +81,7 @@
       for (const word of keywords.high) if (text.includes(word)) score += 40;
       for (const word of keywords.moderate) if (text.includes(word)) score += 25;
       for (const word of keywords.low) if (text.includes(word)) score += 10;
+
       if (score > 100) score = 100;
 
       const result = document.getElementById('result');
@@ -238,10 +98,8 @@
         result.textContent = `Threat Level: ${score}% — High Risk`;
       }
 
-      // Wait 2 seconds, then submit to Formspree
-      setTimeout(() => {
-        e.target.submit();
-      }, 2000);
+      // Delay 2s then submit to Formspree
+      setTimeout(() => e.target.submit(), 2000);
     });
   </script>
 </body>
