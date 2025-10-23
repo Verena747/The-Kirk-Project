@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Add in <head> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Kirk Project | Assessing Threats, Safeguarding Communities</title>
-  <link rel="stylesheet" href="style.css" />
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Kirk Project | Home</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Your site styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- Header -->
   <div id="header"></div>
- <section class="hero">
-  <img src="images/banner.jpg" alt="The Kirk Project Banner" class="hero-image">
-  <div class="hero-text">
-    <h1>Assessing threats. Safeguarding communities. Upholding freedom.</h1>
-  </div>
-</section>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <img src="images/banner.jpg" alt="The Kirk Project Banner" class="hero-image">
+    <div class="hero-text">
+      <h1>Assessing threats. Safeguarding communities. Upholding freedom.</h1>
+    </div>
+  </section>
+
+  <!-- Main Section -->
   <main style="max-width:800px;margin:3rem auto;text-align:center;">
     <h2>Welcome to The Kirk Project</h2>
     <p style="font-size:1.1rem;line-height:1.7;">
@@ -32,299 +33,97 @@
       and educational spaces — ensuring every concern is treated seriously and confidentially.
     </p>
 
-    <a href="report.html" 
+    <a href="report.html"
       style="display:inline-block;margin-top:1.5rem;background:#1e3d59;color:white;padding:0.8rem 1.5rem;
       border-radius:10px;text-decoration:none;font-weight:600;">
       Submit a Report
     </a>
   </main>
 
+  <!-- FAQ Section -->
+  <section id="faq" style="background-color: #f5f8fb; padding: 70px 20px;">
+    <div class="container" style="max-width: 850px; margin: 0 auto;">
+      <h2 style="text-align: center; color: #1e3d59; font-size: 2rem; font-weight: 700; margin-bottom: 40px;">
+        Frequently Asked Questions
+      </h2>
 
+      <div class="accordion" id="faqAccordion">
+
+        <!-- Example FAQ Item -->
+        <div class="accordion-item faq-card">
+          <h3 class="accordion-header" id="faqHeading1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+              What is The Kirk Project?
+            </button>
+          </h3>
+          <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
+            data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              The Kirk Project is an initiative focused on responsibly identifying and preventing potential acts of targeted, political, and community violence through public reporting and professional assessment.
+            </div>
+          </div>
+        </div>
+
+        <!-- Add your other FAQ items here... (Q2–Q11) -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 The Kirk Project. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
     fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
   </script>
-</body>
-</html>
 
-</head>
-<body>
+  <!-- Optional: Restore Hero Banner CSS if missing -->
+  <style>
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
 
-  <div class="banner">
-    <h2>Protecting communities through vigilance and understanding</h2>
-  </div>
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(60%);
+    }
 
-  <main>
-    <section>
-      <h2>Our Mission</h2>
-      <p>
-        The Kirk Project is a public-interest initiative dedicated to preventing acts of political, school-related, or community-based violence through responsible investigation and assessment of potential threats.
-      </p>
-    </section>
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 600;
+      max-width: 80%;
+    }
 
-    <section>
-      <h2>What We Do</h2>
-      <p>
-        We identify, evaluate, and assess threats — ensuring that no concerning comment or action is dismissed or ignored.  
-        Through open-source analysis, education, and collaboration, we aim to prevent credible threats before they can escalate.
-      </p>
-    </section>
+    .faq-card {
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
 
-    <section>
-      <h2>Why It Matters</h2>
-      <p>
-        Every warning sign deserves attention. We ensure that free expression is respected while credible threats are responsibly addressed — balancing liberty with security.
-      </p>
-      <div style="text-align:center; margin-top: 1rem;">
-        <a href="report.html" class="btn">Submit a Report</a>
-      </div>
-    </section>
-  </main>
-
-    <div class="accordion" id="faqAccordion">
-
-<!-- ====== FAQ Section ====== -->
-<section id="faq" class="faq-section" style="background-color: #f5f8fb; padding: 70px 20px;">
-  <div class="container" style="max-width: 850px; margin: 0 auto;">
-    <h2 style="text-align: center; color: #1e3d59; font-size: 2rem; font-weight: 700; margin-bottom: 40px;">
-      Frequently Asked Questions
-    </h2>
-
-    <div class="accordion" id="faqAccordion">
-
-      <!-- Q1 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
-            What is The Kirk Project?
-          </button>
-        </h3>
-        <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            The Kirk Project is an initiative focused on responsibly identifying and preventing potential acts of targeted, political, and community violence through public reporting and professional assessment.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q2 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
-            Who reviews submitted reports?
-          </button>
-        </h3>
-        <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Reports are reviewed by a team trained in behavioral threat assessment and risk management. Each case is evaluated carefully before any further action is taken.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q3 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading3">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
-            Can I submit a report anonymously?
-          </button>
-        </h3>
-        <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Yes, you can choose to remain anonymous. However, providing contact information can help our team follow up for clarification if needed.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q4 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading4">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
-            What happens after I submit a report?
-          </button>
-        </h3>
-        <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Once a report is submitted, it is analyzed for credibility and potential threat level. If it’s determined to be credible, relevant professionals or authorities are notified for safe intervention.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q5 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading5">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
-            How are threats graded or scored?
-          </button>
-        </h3>
-        <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faqHeading5"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Threats are analyzed using a keyword-based system combined with context assessment. Reports are automatically assigned a risk percentage (0–100%) indicating potential severity.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q6 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading6">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse6" aria-expanded="false" aria-controls="faqCollapse6">
-            How is my privacy protected?
-          </button>
-        </h3>
-        <div id="faqCollapse6" class="accordion-collapse collapse" aria-labelledby="faqHeading6"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            All personal and report data is encrypted and handled confidentially. We adhere to strict data protection policies and never share identifying information publicly.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q7 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading7">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse7" aria-expanded="false" aria-controls="faqCollapse7">
-            What if I’m not sure whether something is a threat?
-          </button>
-        </h3>
-        <div id="faqCollapse7" class="accordion-collapse collapse" aria-labelledby="faqHeading7"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            If you’re uncertain, report it anyway. Even small or seemingly insignificant comments can be reviewed safely. Our goal is prevention through early awareness.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q8 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading8">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse8" aria-expanded="false" aria-controls="faqCollapse8">
-            Can I report someone outside my local community?
-          </button>
-        </h3>
-        <div id="faqCollapse8" class="accordion-collapse collapse" aria-labelledby="faqHeading8"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Yes. The Kirk Project accepts reports from anywhere. If a report involves another jurisdiction, we coordinate with the appropriate professionals or authorities.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q9 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading9">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse9" aria-expanded="false" aria-controls="faqCollapse9">
-            Does The Kirk Project replace law enforcement?
-          </button>
-        </h3>
-        <div id="faqCollapse9" class="accordion-collapse collapse" aria-labelledby="faqHeading9"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            No. We are a prevention and assessment initiative that supports early intervention. If an immediate threat exists, always contact emergency services first.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q10 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading10">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse10" aria-expanded="false" aria-controls="faqCollapse10">
-            Does this project censor speech or police free thought?
-          </button>
-        </h3>
-        <div id="faqCollapse10" class="accordion-collapse collapse" aria-labelledby="faqHeading10"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            No. The Kirk Project does not remove posts, silence users, or judge opinions. We focus solely on identifying credible threats of violence. Free expression is essential—our mission is to ensure that open dialogue never turns into real-world harm.
-          </div>
-        </div>
-      </div>
-
-      <!-- Q11 -->
-      <div class="accordion-item faq-card">
-        <h3 class="accordion-header" id="faqHeading11">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#faqCollapse11" aria-expanded="false" aria-controls="faqCollapse11">
-            How can I get involved or support The Kirk Project?
-          </button>
-        </h3>
-        <div id="faqCollapse11" class="accordion-collapse collapse" aria-labelledby="faqHeading11"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            You can support our mission by sharing information responsibly, encouraging awareness in your community, or partnering with us in outreach and education efforts.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Accordion Custom Styling -->
-<style>
-  .faq-card {
-    border-radius: 10px;
-    margin-bottom: 12px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  .faq-card:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
-  }
-
-  .accordion-button {
-    background-color: #ffffff;
-    color: #1e3d59;
-    font-weight: 600;
-    font-size: 1.05rem;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .accordion-button:not(.collapsed) {
-    background-color: #e6eef6;
-    color: #0f2a43;
-  }
-
-  .accordion-button:focus {
-    box-shadow: 0 0 0 0.15rem rgba(30, 61, 89, 0.25);
-  }
-
-  .accordion-body {
-    color: #555;
-    background-color: #ffffff;
-    border-top: 1px solid #e2e6ea;
-    padding: 1rem 1.25rem;
-  }
-</style>
-
-    </div>
-  </div>
-</section>
-
-</section>
-
-  <footer>
-    &copy; 2025 The Kirk Project. All rights reserved.
-  </footer>
-  
-<!-- Add before </body> -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+    .faq-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+  </style>
 </body>
 </html>
