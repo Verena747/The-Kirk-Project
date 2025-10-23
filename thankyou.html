@@ -4,86 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | The Kirk Project</title>
-  <style>
-    body {
-      background-color: #f7f9fb;
-      font-family: "Inter", sans-serif;
-      color: #1e3d59;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | The Kirk Project</title>
+</head>
+<body>
+  <div id="header"></div>
 
-    .thankyou-container {
-      background: white;
-      padding: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      animation: fadeIn 1.2s ease forwards;
-    }
+  <main style="text-align:center;margin:5rem auto;max-width:600px;">
+    <h2>✅ Thank You for Your Submission</h2>
+    <p>Your report has been received and will be reviewed confidentially by our team.</p>
+    <a href="index.html" style="display:inline-block;margin-top:2rem;background:#1e3d59;color:white;padding:0.8rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:600;">Return Home</a>
+  </main>
 
-    .animated-check {
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
+  <div id="footer"></div>
 
-    .circle,
-    .check {
-      stroke-dasharray: 80;
-      stroke-dashoffset: 80;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-    }
+  <script>
+    fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
+    fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
+  </script>
+</body>
+</html>
 
-    .circle {
-      animation: draw-circle 1s ease forwards;
-    }
-
-    .check {
-      animation: draw-check 0.6s ease forwards 1s;
-    }
-
-    @keyframes draw-circle {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    @keyframes draw-check {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    a.return-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      background-color: #1e3d59;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-
-    a.return-btn:hover {
-      background-color: #163146;
-    }
-  </style>
 </head>
 
 <body>
