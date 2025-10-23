@@ -5,93 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Submit a Report | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ---------- REPORT SECTION ---------- */
-    .report-section {
-      background-color: #f0f4f8;
-      padding: 4rem 1rem;
-    }
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit a Report | The Kirk Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
 
-    .report-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      padding: 2.5rem;
-      animation: fadeIn 0.6s ease;
-    }
+  <main style="max-width:800px;margin:3rem auto;text-align:center;">
+    <h2>Submit a Report</h2>
+    <p>Please provide as much information as possible. All submissions are reviewed confidentially.</p>
 
-    .report-container h2 {
-      text-align: center;
-      color: #102542;
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-    }
+    <form id="reportForm" action="https://formspree.io/f/mzzjqknl" method="POST" style="text-align:left;">
+      <input type="hidden" name="_redirect" value="https://thekirkproject.vercel.app/thankyou.html" />
+      <input type="hidden" name="_subject" value="New Threat Report Submission" />
 
-    .report-container p {
-      text-align: center;
-      color: #333;
-      margin-bottom: 2rem;
-    }
+      <label>Your Name (optional)</label>
+      <input type="text" name="name" placeholder="Leave blank to stay anonymous" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;" />
 
-    form label {
-      font-weight: 600;
-      color: #1e3d59;
-      display: block;
-      margin-top: 1rem;
-    }
+      <label>Your Email (optional)</label>
+      <input type="email" name="email" placeholder="Only if you’d like follow-up" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;" />
 
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin-top: 0.3rem;
-      font-size: 1rem;
-      transition: all 0.2s ease-in-out;
-    }
+      <label>Platform / Source</label>
+      <input type="text" name="platform" required placeholder="e.g., Twitter, Reddit, Facebook" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;" />
 
-    form input:focus,
-    form textarea:focus {
-      border-color: #1e3d59;
-      outline: none;
-      box-shadow: 0 0 4px #1e3d59;
-    }
+      <label>Username / Handle of Commenter</label>
+      <input type="text" name="username" placeholder="Enter the username or screen name" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;" />
 
-    form button {
-      display: block;
-      width: 100%;
-      margin-top: 1.8rem;
-      background-color: #1e3d59;
-      color: white;
-      padding: 0.9rem;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+      <label>Comment or Post Content</label>
+      <textarea name="comment" rows="4" required placeholder="Paste the full comment or message here" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;"></textarea>
 
-    form button:hover {
-      background-color: #163146;
-    }
+      <label>Context / Additional Information</label>
+      <textarea name="context" rows="4" placeholder="Add any context, screenshots, or details" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;"></textarea>
 
-    /* ---------- RESULT ---------- */
-    #result {
-      margin-top: 1.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
-      display: none;
-    }
+      <label>Location (if relevant)</label>
+      <input type="text" name="location" placeholder="City, State, or Region" style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;" />
 
-    .low { color: #2e8b57; }
-    .moderate { color: #ff9800; }
-    .high { color: #d32f2f; }
-  </style>
+      <button type="submit" style="background:#1e3d59;color:white;padding:0.9rem;width:100%;border:none;border-radius:10px;cursor:pointer;font-weight:600;">Submit Report</button>
+    </form>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
+    fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
+  </script>
+</body>
+</html>
+
 </head>
 
 <body>
