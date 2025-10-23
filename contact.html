@@ -5,83 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: "Inter", sans-serif;
-      background-color: #f9fafc;
-      color: #1a1a1a;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: linear-gradient(to right, #102542, #1e3d59);
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    header h1 { margin: 0; font-size: 2rem; }
-    nav {
-      background-color: #ffffff;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 0.8rem 0;
-      border-bottom: 1px solid #e0e4ea;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-    nav a {
-      text-decoration: none;
-      color: #1e3d59;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { color: #ff9800; }
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | The Kirk Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header"></div>
 
-    main {
-      max-width: 700px;
-      margin: 3rem auto;
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-    h2 { text-align: center; color: #102542; }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input, textarea, button {
-      padding: 0.75rem;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      transition: all 0.2s;
-    }
-    input:focus, textarea:focus {
-      border-color: #1e3d59;
-      box-shadow: 0 0 4px #1e3d59;
-      outline: none;
-    }
-    button {
-      background-color: #1e3d59;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-    button:hover { background-color: #163146; }
+  <main style="max-width:700px;margin:3rem auto;text-align:center;">
+    <h2>Contact Us</h2>
+    <p>Have a question or suggestion? Reach out to our team below.</p>
 
-    footer {
-      background-color: #f1f3f6;
-      text-align: center;
-      padding: 1rem;
-      color: #555;
-      border-top: 1px solid #e0e4ea;
-    }
-  </style>
+    <form action="https://formspree.io/f/mzzjqknl" method="POST" style="text-align:left;margin-top:1.5rem;">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;" />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;" />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;"></textarea>
+
+      <button type="submit" style="background:#1e3d59;color:white;padding:0.8rem 1.5rem;border:none;border-radius:10px;cursor:pointer;font-weight:600;">Send Message</button>
+    </form>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
+    fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
+  </script>
+</body>
+</html>
+
 </head>
 <body>
  <header>
