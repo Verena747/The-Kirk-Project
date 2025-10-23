@@ -1,8 +1,6 @@
 <header>
-  <div class="hero">
-    <h1>The Kirk Project</h1>
-    <p>Assessing threats. Safeguarding communities. Upholding freedom.</p>
-  </div>
+  <h1>The Kirk Project</h1>
+  <p>Assessing threats. Safeguarding communities. Upholding freedom.</p>
 </header>
 
 <nav>
@@ -11,3 +9,45 @@
   <a href="contact.html">Contact</a>
   <a href="report.html">Report a Threat</a>
 </nav>
+
+<style>
+  header {
+    background: linear-gradient(to right, #102542, #1e3d59);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  header p {
+    margin: 0.3rem 0 0;
+    font-size: 1.1rem;
+  }
+
+  nav {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e0e4ea;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #1e3d59;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #ff9800;
+  }
+</style>
