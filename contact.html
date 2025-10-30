@@ -3,38 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | The Kirk Project</title>
+  <title>Contact Us | Threat Assessment Initiative</title>
   <link rel="stylesheet" href="style.css" />
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: url("banner.jpg") center/cover no-repeat;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-section {
+      max-width: 650px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      background: #003366;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0055aa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile-friendly adjustments */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+        padding: 0 10px;
+      }
+      .contact-section {
+        margin: 30px 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div id="header"></div>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
 
-  <main style="max-width:700px;margin:3rem auto;text-align:center;">
-    <h2>Contact Us</h2>
-    <p>Have a question or suggestion? Reach out to our team below.</p>
+  <section class="contact-section">
+    <h2>We’re here to help</h2>
+    <p style="text-align:center;">Use this form to reach out for inquiries, suggestions, or concerns.</p>
 
-    <form action="https://formspree.io/f/mzzjqknl" method="POST" style="text-align:left;margin-top:1.5rem;">
-      <label for="name">Your Name</label>
-      <input type="text" id="name" name="name" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;" />
+    <form action="https://formspree.io/f/mzzjqknl" method="POST" onsubmit="redirectAfterSubmit(event)">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;" />
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="_replyto" required />
 
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required style="width:100%;padding:0.75rem;margin-bottom:1rem;border-radius:10px;border:1px solid #ccc;"></textarea>
+      <textarea id="message" name="message" required></textarea>
 
-      <button type="submit" style="background:#1e3d59;color:white;padding:0.8rem 1.5rem;border:none;border-radius:10px;cursor:pointer;font-weight:600;">Send Message</button>
+      <button type="submit">Send Message</button>
     </form>
-  </main>
+  </section>
 
-  <div id="footer"></div>
+  <footer>
+    <p>&copy; 2025 Threat Assessment Initiative. All rights reserved.</p>
+  </footer>
 
-  
+  <script>
+    async function redirectAfterSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          window.location.href = "thankyou.html";
+        } else {
+          alert("Oops! Something went wrong submitting your message.");
+        }
+      } catch (error) {
+        alert("An error occurred. Please try again later.");
+      }
+    }
+  </script>
+</body>
+</html>
