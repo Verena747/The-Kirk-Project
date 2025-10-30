@@ -3,34 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Threat Assessment Initiative</title>
+  <title>Contact | Threat Assessment Initiative</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       margin: 0;
       background-color: #f5f7fa;
       color: #222;
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
+    /* Page header image section */
+    .hero {
       background: url("banner.jpg") center/cover no-repeat;
       color: white;
+      text-align: center;
+      padding: 100px 20px;
     }
 
-    header h1 {
-      font-size: 2.2rem;
+    .hero h1 {
+      font-size: 2.3rem;
       font-weight: 600;
       max-width: 800px;
       margin: 0 auto;
     }
 
+    /* Contact box */
     .contact-section {
       max-width: 650px;
-      margin: 50px auto;
-      padding: 20px;
+      margin: 60px auto;
+      padding: 30px;
       background: white;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -81,9 +83,8 @@
       font-size: 0.9rem;
     }
 
-    /* Mobile-friendly adjustments */
     @media (max-width: 600px) {
-      header h1 {
+      .hero h1 {
         font-size: 1.6rem;
         padding: 0 10px;
       }
@@ -95,15 +96,34 @@
 </head>
 
 <body>
+  <!-- ✅ Restored full header -->
   <header>
-    <h1>Contact Us</h1>
+    <div class="logo">
+      <img src="logo.png" alt="Threat Assessment Initiative Logo" />
+      <h1>Threat Assessment Initiative</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="report.html">Report</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
   </header>
+
+  <!-- ✅ Banner under the nav -->
+  <section class="hero">
+    <h1>Contact Us</h1>
+  </section>
 
   <section class="contact-section">
     <h2>We’re here to help</h2>
     <p style="text-align:center;">Use this form to reach out for inquiries, suggestions, or concerns.</p>
 
-    <form action="https://formspree.io/f/mzzjqknl" method="POST" onsubmit="redirectAfterSubmit(event)">
+    <!-- ✅ Keeps AJAX redirect -->
+    <form action="https://formspree.io/f/your_form_id" method="POST" onsubmit="redirectAfterSubmit(event)">
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required />
 
