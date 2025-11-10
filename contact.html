@@ -4,76 +4,171 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | The Kirk Project</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #1f1f1f;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #111827;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #1f2937;
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #1e40af;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #3b82f6;
+      outline: none;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1e40af;
+    }
+
+    .contact-info {
+      margin-top: 2rem;
+      background-color: #f9fafb;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+    }
+
+    footer {
+      background-color: #111827;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header loaded dynamically -->
-  <div id="header"></div>
+  <header>
+    <h1>Contact The Kirk Project</h1>
+    <p>Reach out to collaborate, share insights, or request information.</p>
+  </header>
 
-  <!-- Hero Banner -->
-  <section class="hero" style="background: url('banner.jpg') center/cover no-repeat; color: white; text-align: center; padding: 100px 20px;">
-    <h1>Contact Us</h1>
-    <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
-      We value your input and collaboration — reach out with any questions, ideas, or feedback.
-    </p>
-  </section>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <!-- Contact Form -->
-  <main style="max-width:800px; margin:3rem auto; text-align:center;">
-    <h2>Get in Touch</h2>
-    <p>Please fill out the form below, and a member of our team will respond as soon as possible.</p>
+  <main>
+    <section>
+      <h2>Get in Touch</h2>
+      <p>
+        We welcome inquiries from researchers, educators, community leaders, and anyone interested in helping prevent violence through responsible threat assessment. 
+        Please fill out the form below, and we’ll get back to you as soon as possible.
+      </p>
 
-    <form id="contactForm" action="https://formspree.io/f/your_form_id" method="POST" onsubmit="redirectAfterSubmit(event)" style="text-align:left;">
-      <label>Name</label>
-      <input type="text" name="name" placeholder="Your name" required
-        style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;">
+      <form>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
 
-      <label>Email</label>
-      <input type="email" name="_replyto" placeholder="Your email" required
-        style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
 
-      <label>Message</label>
-      <textarea name="message" rows="5" placeholder="Write your message here" required
-        style="width:100%;padding:0.75rem;border-radius:10px;border:1px solid #ccc;margin-bottom:1rem;"></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
 
-      <button type="submit"
-        style="background:#1e3d59;color:white;padding:0.9rem;width:100%;border:none;border-radius:10px;cursor:pointer;font-weight:600;">
-        Send Message
-      </button>
-    </form>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <p><strong>Email:</strong> info@thekirkproject.org</p>
+        <p><strong>Location:</strong> United States</p>
+        <p><strong>Hours:</strong> Monday–Friday, 9 AM–5 PM</p>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <div id="footer"></div>
-
-  <script>
-    // Load header and footer from external files
-    fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
-    fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
-
-    // Redirect to Thank You page on successful submission
-    async function redirectAfterSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          window.location.href = "thankyou.html";
-        } else {
-          alert("Oops! Something went wrong submitting your message.");
-        }
-      } catch (error) {
-        alert("An error occurred. Please try again later.");
-      }
-    }
-  </script>
+  <footer>
+    <p>© 2025 The Kirk Project. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
 </body>
 </html>
-
