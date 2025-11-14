@@ -248,4 +248,5 @@ footer {
   margin: 0 auto;
   font-size: 1.2rem;
   line-height: 1.5;
+  color: white;   /* ← Force white text */
 }
