@@ -234,7 +234,7 @@ footer {
 .hero-contact {
   background: url("Contact Banner.png") center/cover no-repeat;
   padding: 120px 20px;
-  text-align: right;
+  text-align: center;
   color: white;
 }
 
