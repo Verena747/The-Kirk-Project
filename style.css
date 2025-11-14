@@ -231,3 +231,21 @@ footer {
     margin-bottom: 1rem;
   }
 }
+.hero-contact {
+  background: url("banner.jpg") center/cover no-repeat;
+  padding: 120px 20px;
+  text-align: right;
+  color: white;
+}
+
+.hero-contact h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-contact p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
