@@ -26,6 +26,15 @@ header h1 {
   letter-spacing: 1px;
 }
 
+}
+
+.banner h1,
+.banner-title {
+    color: white;
+    -webkit-text-stroke: 2px #0a2a66; /* Dark blue outline */
+    text-stroke: 2px #0a2a66;        /* Non-webkit fallback */
+}
+
 header p {
   margin-top: 0.5rem;
   font-size: 1.05rem;
