@@ -250,3 +250,17 @@ footer {
   line-height: 1.5;
   color: white;   /* ← Force white text */
 }
+
+/* Banner text outline */
+.hero-title,
+.hero-subtitle,
+.hero-text h1,
+.hero-text p {
+  color: #ffffff; /* keep font white */
+  text-shadow:
+  -3px -3px 0 #0A2342,
+   3px -3px 0 #0A2342,
+  -3px  3px 0 #0A2342,
+   3px  3px 0 #0A2342;
+  
+}
