@@ -5,17 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | The Kirk Project</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Banner styling */
+    .hero-contact {
+      background: url('american-flag.jpg') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Outline effect */
+    .hero-contact h1,
+    .hero-contact p {
+      color: white;
+      -webkit-text-stroke: 2px #0a2a66; /* dark blue outline */
+      text-stroke: 2px #0a2a66;
+    }
+
+    .hero-contact p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
-  
-  <!-- Header loaded dynamically -->
+
+  <!-- Header -->
   <div id="header"></div>
 
-<section class="hero-contact">
-  <h1>Contact Us</h1>
-  <p>We value your input and collaboration — reach out with any questions, ideas, or feedback.</p>
-</section>
-
+  <!-- Banner Section -->
+  <section class="hero-contact">
+    <h1>Contact Us</h1>
+    <p>We value your input and collaboration — reach out with any questions, ideas, or feedback.</p>
+  </section>
 
   <!-- Contact Form -->
   <main style="max-width:800px; margin:3rem auto; text-align:center;">
@@ -46,11 +70,9 @@
   <div id="footer"></div>
 
   <script>
-    // Load header and footer from external files
     fetch("header.html").then(r => r.text()).then(t => document.getElementById("header").innerHTML = t);
     fetch("footer.html").then(r => r.text()).then(t => document.getElementById("footer").innerHTML = t);
 
-    // Redirect to Thank You page on successful submission
     async function redirectAfterSubmit(event) {
       event.preventDefault();
       const form = event.target;
